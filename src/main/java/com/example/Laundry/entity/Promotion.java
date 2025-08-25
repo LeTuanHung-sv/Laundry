@@ -1,0 +1,21 @@
+package com.example.Laundry.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.Date;
+
+@Entity
+@Table
+@Data
+public class Promotion {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long promotionId;
+    private String promotionName;
+    private String discountRate;
+    private Date starDate;
+    private Date endDate;
+    private String active;
+
+}
