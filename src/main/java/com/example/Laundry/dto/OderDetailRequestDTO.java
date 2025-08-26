@@ -17,7 +17,7 @@ public class OderDetailRequestDTO {
     @Future (message = "Ngay tuong lai")
     private Date oderDate;
 
-    @Negative (message = "Khong am")
+    @Negative
     private BigDecimal totalAmount;
 
     private String note;
