@@ -15,4 +15,8 @@ public class Invoice {
     private BigDecimal amount;
     private BigDecimal price;
     private BigDecimal totalPrice;
+
+    @OneToOne()
+    @JoinColumn(name = "oderId")
+    private Oder oder;
 }

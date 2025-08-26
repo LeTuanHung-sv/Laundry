@@ -24,11 +24,20 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot Starter cho JPA (làm việc với database qua Hibernate)
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Spring Boot Starter cho Web (REST API, Spring MVC, Tomcat)
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Lombok - giảm code boilerplate (getter, setter, constructor, ...)
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// Driver MySQL
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// Thư viện cho test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

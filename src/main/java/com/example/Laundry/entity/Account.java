@@ -13,4 +13,16 @@ public class Account {
     private Long accountId;
     private String password;
     private String active;
+
+    @OneToOne
+    @JoinColumn(name = "roleId")
+    private Role role;
+
+    @OneToOne
+    @JoinColumn(name = "customerId")
+    private Customer customer;
+
+    @OneToOne
+    @JoinColumn(name = "staffId")
+    private Staff staff;
 }

@@ -3,6 +3,8 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+
 @Entity
 @Data
 @Table
@@ -16,4 +18,10 @@ public class Customer {
     private Double phoneNumber;
     private String level;
     private String avatar;
+
+    @OneToOne(mappedBy = "customer")
+    private Account account;
+
+    @OneToMany(mappedBy = "customer")
+    private ArrayList<Oder> oder;
 }

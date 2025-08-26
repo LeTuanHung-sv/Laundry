@@ -3,7 +3,9 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -18,4 +20,10 @@ public class Promotion {
     private Date endDate;
     private String active;
 
+    @ManyToOne
+    @JoinColumn(name = "staffId")
+    private Staff staff;
+
+    @OneToMany(mappedBy = "promotion")
+    private List<Service> services;
 }

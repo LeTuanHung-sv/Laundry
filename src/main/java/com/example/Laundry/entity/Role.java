@@ -11,4 +11,7 @@ public class Role {
     @Id
     private Long roleId;
     private String roleName;
+
+    @OneToOne(mappedBy = "role")
+    private Account account;
 }
