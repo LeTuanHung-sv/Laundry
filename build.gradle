@@ -30,6 +30,9 @@ dependencies {
 	// Spring Boot Starter cho Web (REST API, Spring MVC, Tomcat)
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	// https://mvnrepository.com/artifact/javax.validation/validation-api
+	implementation("javax.validation:validation-api:2.0.1.Final")
+
 	// Lombok - giảm code boilerplate (getter, setter, constructor, ...)
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
