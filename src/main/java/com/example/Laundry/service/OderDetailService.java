@@ -1,4 +1,12 @@
 package com.example.Laundry.service;
 
-public class OderDetailService {
+import com.example.Laundry.dto.OderDetailRequestDTO;
+import com.example.Laundry.dto.OderDetailResponseDTO;
+
+import java.util.List;
+
+public interface OderDetailService {
+    OderDetailResponseDTO createOderDetail(OderDetailRequestDTO requestDTO);
+    List<OderDetailResponseDTO> getAllOderDetails();
+    List<OderDetailResponseDTO> getByOderId(Long oderId);
 }

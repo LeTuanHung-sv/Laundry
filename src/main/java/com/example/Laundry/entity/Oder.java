@@ -1,5 +1,6 @@
 package com.example.Laundry.entity;
 
+import com.example.Laundry.OderStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,12 +10,13 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
+@Table (name = "orders")
 @Data
 public class Oder {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long oderId;
+
     private Date oderDate;
     private BigDecimal totalAmount;
     private String note;
