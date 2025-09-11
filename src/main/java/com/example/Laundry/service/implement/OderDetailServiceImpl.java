@@ -3,6 +3,7 @@ package com.example.Laundry.service.implement;
 import com.example.Laundry.dto.OderDetailRequestDTO;
 import com.example.Laundry.dto.OderDetailResponseDTO;
 import com.example.Laundry.entity.OderDetail;
+import com.example.Laundry.mapper.OderDetailMapper;
 import com.example.Laundry.repository.OderDetailRepository;
 import com.example.Laundry.service.OderDetailService;
 import lombok.Builder;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 public class OderDetailServiceImpl implements OderDetailService {
 
     private final OderDetailRepository oderDetailRepository;
+    private final OderDetailMapper oderDetailMapper;
 
     @Override
     public OderDetailResponseDTO createOderDetail(OderDetailRequestDTO requestDTO){
@@ -42,37 +44,26 @@ public class OderDetailServiceImpl implements OderDetailService {
 
     @Override
     public List<OderDetailResponseDTO> getAllOderDetails(){
-        List<OderDetailResponseDTO> oderDetailResponseDTOS = new ArrayList<>();
-        List<OderDetail> oderDetails = oderDetailRepository.findAll();
-        for (OderDetail o : oderDetails)
-        {
-            OderDetailResponseDTO dto = OderDetailResponseDTO.builder()
-                    .id(o.getOderDetailId())
-                    .price(o.getPrice())
-                    .amount(o.getAmount())
-                    .specialRequest(o.getSpecialRequest())
-                    .build();
-            oderDetailResponseDTOS.add(dto);
-        }
-        return oderDetailResponseDTOS;
+        return oderDetailRepository.findAll()
+                .stream()
+                .map(o -> OderDetailResponseDTO.builder()
+                        .id(o.getOderDetailId())
+                        .price(o.getPrice())
+                        .amount(o.getAmount())
+                        .specialRequest(o.getSpecialRequest())
+                        .build())
+                .toList();
     }
 
     @Override
     public List<OderDetailResponseDTO> getByOderId(Long oderId) {
-       List<OderDetail> oderDetail = oderDetailRepository.findByOder_OderId(oderId);
+       List<OderDetail> oderDetails = oderDetailRepository.findByOder_OderId(oderId);
 
-       if(oderDetail.isEmpty()){
+       if(oderDetails.isEmpty()){
            throw new RuntimeException("oderId khong hop le:" + oderId);
        }
 
-       return oderDetail.stream().map(oderDetail1 -> OderDetailResponseDTO.builder()
-                       .id(oderDetail1.getOderDetailId())
-                       .price(oderDetail1.getPrice())
-                       .amount(oderDetail1.getAmount())
-                       .specialRequest(oderDetail1.getSpecialRequest())
-                       .build()
-       )
-               .toList();
+       return oderDetailMapper.toDtoList(oderDetails);
     }
 
 }

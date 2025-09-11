@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class OderStatusHistoryController {
 
     @PutMapping("/{id}/status")
     public ResponseEntity<Oder> updateStatus(@PathVariable Long id,
-                                             @RequestBody Map<String,String > request){
+                                             @Valid @RequestBody Map<String,String > request){
         OderStatus newStatus = OderStatus.valueOf(request.get("status"));
         return ResponseEntity.ok(oderStatusHistoryService.updateStatus(id,newStatus));
     }

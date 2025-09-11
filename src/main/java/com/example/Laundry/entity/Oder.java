@@ -4,6 +4,7 @@ import com.example.Laundry.OderStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +16,7 @@ import java.util.List;
 public class Oder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull(message = "id cannot blank")
     private Long oderId;
 
     private Date oderDate;

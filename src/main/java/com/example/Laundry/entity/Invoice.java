@@ -3,6 +3,7 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @NotNull(message = "id cannot blank")
     private Long invoiceId;
     private BigDecimal amount;
     private BigDecimal price;

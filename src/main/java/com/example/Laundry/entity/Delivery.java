@@ -3,6 +3,7 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 
 @Entity
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @NotNull(message = "id cannot blank")
     private Long deliveryId;
     private String description;
 

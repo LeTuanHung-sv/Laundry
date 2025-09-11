@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Table(name = "oder_status_history")
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 public class OderStatusHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull(message = "id cannot blank")
     private Long id;
 
     @Enumerated(EnumType.STRING)
