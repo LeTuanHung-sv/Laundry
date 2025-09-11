@@ -3,6 +3,7 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -12,6 +13,7 @@ public class OderDetail {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @NotNull(message = "Id not blank")
     private Long orderDetailId;
     private BigDecimal price;
     private BigDecimal amount;

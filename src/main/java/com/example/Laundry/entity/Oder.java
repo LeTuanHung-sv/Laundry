@@ -32,4 +32,7 @@ public class Oder {
     @ManyToOne()
     @JoinColumn(name = "deliveryId")
     private Delivery delivery;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OderResource> resources = new ArrayList<>();
 }
