@@ -6,8 +6,6 @@ import com.example.Laundry.entity.OderDetail;
 import com.example.Laundry.mapper.OderDetailMapper;
 import com.example.Laundry.repository.OderDetailRepository;
 import com.example.Laundry.service.OderDetailService;
-import lombok.Builder;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Builder
 @RequiredArgsConstructor
 
 public class OderDetailServiceImpl implements OderDetailService {
@@ -63,7 +60,9 @@ public class OderDetailServiceImpl implements OderDetailService {
            throw new RuntimeException("oderId khong hop le:" + oderId);
        }
 
-       return oderDetailMapper.toDtoList(oderDetails);
+       return oderDetails.stream()
+               .map(oderDetailMapper::toDto)
+               .toList();
     }
 
 }

@@ -4,6 +4,8 @@ import com.example.Laundry.OderStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Negative;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,10 +18,13 @@ import java.util.List;
 public class Oder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "id cannot blank")
+    @NotNull(message = "id cannot be blank")
     private Long oderId;
 
+    @Future(message = "Booking date must be in the future")
     private Date oderDate;
+
+    @Negative(message = "totalAmount cannot be Negative")
     private BigDecimal totalAmount;
     private String note;
 

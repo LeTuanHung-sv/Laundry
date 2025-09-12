@@ -18,7 +18,7 @@ import java.util.Date;
 @Builder
 public class OderDetailRequestDTO {
 
-    @NotNull(message = "khong trong or rong")
+    
     private Long oderDetailId;
 
     @Negative(message = "khong am")
@@ -26,5 +26,7 @@ public class OderDetailRequestDTO {
 
     @Negative(message = "khong am")
     private BigDecimal amount;
+
+    @NotBlank(message = "specialRequest not blank or null")
     private String specialRequest;
 }

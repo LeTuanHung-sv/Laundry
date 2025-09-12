@@ -12,12 +12,12 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/order-details")
+@RequestMapping("/order-details")
 @RequiredArgsConstructor
 public class OderDetailController {
     private final OderDetailService oderDetailService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<OderDetailResponseDTO> createDetail(
            @Valid @RequestBody OderDetailRequestDTO dto){
         return ResponseEntity.ok(oderDetailService.createOderDetail(dto));

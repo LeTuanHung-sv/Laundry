@@ -3,6 +3,7 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,8 +15,10 @@ import java.util.List;
 public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @NotNull(message = "id cannot blank")
+    @NotNull(message = "id cannot be blank")
     private Long promotionId;
+
+    @NotBlank
     private String promotionName;
     private String discountRate;
     private Date starDate;

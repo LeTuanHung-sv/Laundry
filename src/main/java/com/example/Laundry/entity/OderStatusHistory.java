@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class OderStatusHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "id cannot blank")
+    @NotNull(message = "id cannot be blank")
     private Long id;
 
     @Enumerated(EnumType.STRING)

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -19,11 +21,16 @@ public class OderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "id cannot blank")
+    @NotNull(message = "id cannot be blank")
     private Long oderDetailId;
 
+    @Negative(message = "price cannot be negative")
     private BigDecimal price;
+
+    @Negative(message = "price cannot be negative")
     private BigDecimal amount;
+
+    @NotBlank(message = "specialRequest not null")
     private String specialRequest;
 
     @ManyToOne
