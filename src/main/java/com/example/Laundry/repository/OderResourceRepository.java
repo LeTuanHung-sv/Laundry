@@ -5,5 +5,5 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OderResourceRepository extends JpaRepository<OderResource, Long> {
-    List<OderResource> findByOderId(Long oderId);
+    List<OderResource> findByOder_OderId(Long oderId);
 }

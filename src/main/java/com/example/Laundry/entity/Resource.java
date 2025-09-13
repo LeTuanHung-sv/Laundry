@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +22,15 @@ import java.util.List;
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "Id not blank")
     private Long id;
 
+    @NotBlank(message = "name cannot be blank")
     private String name;
 
+    @NotBlank(message = "type cannot be blank")
     private String type;
+
+    @Negative(message = "totalAmount cannot be negative")
     private Integer totalAmount;
 
     @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL)

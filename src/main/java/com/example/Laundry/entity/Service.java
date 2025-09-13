@@ -3,6 +3,8 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,11 +17,17 @@ import java.util.List;
 public class Service {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @NotNull(message = "Id not blank")
     private Long serviceId;
+
+    @NotBlank(message = "name cannot be blank")
     private String serviceName;
+
+    @NotBlank(message = "description cannot be blank")
     private String description;
+
+    @Negative(message = "price cannot be negative")
     private BigDecimal price;
+
     @OneToMany(mappedBy = "service")
     private List<OderDetail> oderDetailList = new ArrayList<>();
 

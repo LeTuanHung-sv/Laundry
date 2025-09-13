@@ -15,6 +15,8 @@ import javax.validation.constraints.NotBlank;
 @Builder
 
 public class OderResourceResponseDTO {
+    private Long id;
+
     @NotBlank(message = "name cannot be left blank")
     private String resourceName;
 

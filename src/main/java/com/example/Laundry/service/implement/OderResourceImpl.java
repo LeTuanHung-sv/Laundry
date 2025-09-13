@@ -5,6 +5,7 @@ import com.example.Laundry.dto.OderResourceResponseDTO;
 import com.example.Laundry.entity.Oder;
 import com.example.Laundry.entity.OderResource;
 import com.example.Laundry.entity.Resource;
+import com.example.Laundry.mapper.OderResourceMapper;
 import com.example.Laundry.repository.OderRepository;
 import com.example.Laundry.repository.OderResourceRepository;
 import com.example.Laundry.repository.ResourceRepository;
@@ -22,6 +23,7 @@ public class OderResourceImpl implements OderResourceService {
     private final OderRepository oderRepository;
     private final ResourceRepository resourceRepository;
     private final OderResourceRepository oderResourceRepository;
+    private final OderResourceMapper oderResourceMapper;
 
     @Override
     public OderResourceResponseDTO allocateResource(Long orderId, OderResourceRequestDTO dto) {
@@ -39,23 +41,12 @@ public class OderResourceImpl implements OderResourceService {
                 .allocatedAmount(dto.getAllocatedAmount())
                 .build();
         oderResourceRepository.save(oderResource);
-        return OderResourceResponseDTO.builder()
-                .resourceName(resource.getName())
-                .resourceType(resource.getType())
-                .allocatedAmount(dto.getAllocatedAmount())
-                .build();
+        return oderResourceMapper.toResponseDTO(oderResource);
     }
 
     @Override
     public List<OderResourceResponseDTO> getResourcesByOrder(Long orderId){
-        List<OderResource> list = oderResourceRepository.findByOderId(orderId);
-
-        return list.stream()
-                .map(or -> OderResourceResponseDTO.builder()
-                        .resourceName(or.getResource().getName())
-                        .resourceType(or.getResource().getType())
-                        .allocatedAmount(or.getAllocatedAmount())
-                        .build())
-                .toList();
+        List<OderResource> list = oderResourceRepository.findByOder_OderId(orderId);
+        return oderResourceMapper.toResponseDTOList(list);
     }
 }

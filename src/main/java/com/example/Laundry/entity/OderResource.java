@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Negative;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -18,8 +19,10 @@ import javax.validation.constraints.NotNull;
 public class OderResource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "Id not blank")
     private Long id;
+
+    @Negative(message = "allocatedAmount cannot be negative")
+    private Integer allocatedAmount;
 
     @ManyToOne
     private Oder oder;
@@ -27,5 +30,4 @@ public class OderResource {
     @ManyToOne
     private Resource resource;
 
-    private Integer allocatedAmount;
 }
