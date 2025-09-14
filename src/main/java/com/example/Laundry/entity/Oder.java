@@ -2,12 +2,16 @@ package com.example.Laundry.entity;
 
 import com.example.Laundry.OderStatus;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.Negative;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Negative;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,16 +19,16 @@ import java.util.List;
 @Entity
 @Table (name = "orders")
 @Data
+@Builder
 public class Oder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "id cannot be blank")
     private Long oderId;
 
     @Future(message = "Booking date must be in the future")
-    private Date oderDate;
+    private LocalDateTime oderDate;
 
-    @Negative(message = "totalAmount cannot be Negative")
+    @PositiveOrZero(message = "totalAmount cannot be <= 0")
     private BigDecimal totalAmount;
     private String note;
 

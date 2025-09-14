@@ -3,7 +3,8 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -13,6 +14,9 @@ public class Role {
     @Id
     @NotNull(message = "id cannot blank")
     private Long roleId;
+
+
+    @NotBlank(message = "name cannot be blank")
     private String roleName;
 
     @OneToOne(mappedBy = "role")

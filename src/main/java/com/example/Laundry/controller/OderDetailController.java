@@ -4,11 +4,12 @@ import com.example.Laundry.dto.OderDetailRequestDTO;
 import com.example.Laundry.dto.OderDetailResponseDTO;
 import com.example.Laundry.service.OderDetailService;
 import com.example.Laundry.service.implement.OderDetailServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.constraints.*;
 import java.util.List;
 
 @RestController

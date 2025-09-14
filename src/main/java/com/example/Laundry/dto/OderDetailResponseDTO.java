@@ -1,14 +1,15 @@
 package com.example.Laundry.dto;
 
 import com.example.Laundry.entity.OderDetail;
+import com.example.Laundry.entity.Service;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Negative;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Negative;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Data
@@ -17,7 +18,6 @@ import java.math.BigDecimal;
 @Builder
 public class OderDetailResponseDTO {
 
-    @NotNull(message = "id cannot be blank")
     private Long id;
 
     @Negative(message = "price cannot be negative")
@@ -28,4 +28,7 @@ public class OderDetailResponseDTO {
 
     @NotBlank(message = "specialRequest not null")
     private String specialRequest;
+
+//    @NotBlank(message = "service not blank or null")
+//    private Service service;
 }

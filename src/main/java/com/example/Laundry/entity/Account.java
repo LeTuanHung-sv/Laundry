@@ -3,7 +3,7 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table

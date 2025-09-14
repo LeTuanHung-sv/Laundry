@@ -1,6 +1,8 @@
 package com.example.Laundry.service.implement;
 
 import com.example.Laundry.OderStatus;
+import com.example.Laundry.dto.OderHistoryRequestDTO;
+import com.example.Laundry.dto.OderHistoryResponsesDTO;
 import com.example.Laundry.entity.Oder;
 import com.example.Laundry.entity.OderStatusHistory;
 import com.example.Laundry.repository.OderRepository;
@@ -20,6 +22,22 @@ import java.util.List;
 public class OderStatusHistoryImpl implements OderStatusHistoryService {
     private final OrderStatusHistoryRepository historyRepository;
     private final OderRepository oderRepository;
+
+    @Override
+    public OderHistoryResponsesDTO createOder(OderHistoryRequestDTO requestDTO){
+        Oder oder = Oder.builder()
+                .oderDate(requestDTO.getOderDate())
+                .totalAmount(requestDTO.getTotalAmount())
+                .note(requestDTO.getNote())
+                .build();
+        Oder oder1 = oderRepository.save(oder);
+        return OderHistoryResponsesDTO.builder()
+                .oderId(oder1.getOderId())
+                .oderDate(oder1.getOderDate())
+                .totalAmount(oder1.getTotalAmount())
+                .note(oder1.getNote())
+                .build();
+    }
 
     @Override
     public Oder updateStatus(Long orderId, OderStatus newStatus){

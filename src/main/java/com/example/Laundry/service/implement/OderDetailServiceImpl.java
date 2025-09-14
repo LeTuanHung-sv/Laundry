@@ -27,13 +27,16 @@ public class OderDetailServiceImpl implements OderDetailService {
                 .price(requestDTO.getPrice())
                 .amount(requestDTO.getAmount())
                 .specialRequest(requestDTO.getSpecialRequest())
+                //.service(requestDTO.getService())
+                .service(new com.example.Laundry.entity.Service())
                 .build();
         OderDetail oderDetail1 = oderDetailRepository.save(oderDetail);
         return OderDetailResponseDTO.builder()
-                .id(oderDetail.getOderDetailId())
-                .price(oderDetail.getPrice())
-                .amount(oderDetail.getAmount())
-                .specialRequest(oderDetail.getSpecialRequest())
+                .id(oderDetail1.getOderDetailId())
+                .price(oderDetail1.getPrice())
+                .amount(oderDetail1.getAmount())
+                .specialRequest(oderDetail1.getSpecialRequest())
+                //.service(oderDetail1.getService())
                 .build();
 
 

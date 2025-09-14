@@ -3,8 +3,8 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.validation.constraints.Negative;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Negative;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
