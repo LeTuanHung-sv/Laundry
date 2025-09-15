@@ -24,13 +24,13 @@ public class OderDetailController {
         return ResponseEntity.ok(oderDetailService.createOderDetail(dto));
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<OderDetailResponseDTO>> getAllOderDetails(){
         return ResponseEntity.ok(oderDetailService.getAllOderDetails());
     }
 
     @GetMapping("/search")
     public List<OderDetailResponseDTO> search(@RequestParam(required = false) Long oderId) {
-        return oderDetailService.getByOderId(oderId);
+        return oderDetailService.findById(oderId);
     }
 }

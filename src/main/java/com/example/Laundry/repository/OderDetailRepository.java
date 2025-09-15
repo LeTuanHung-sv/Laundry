@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 public interface OderDetailRepository extends JpaRepository<OderDetail, Long> {
-    List<OderDetail> findByOder_OderId(Long oderId);
+    Optional<List<OderDetail>> findByOder_OderId(Long oderId);
 }
 
 

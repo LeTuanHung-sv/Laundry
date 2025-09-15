@@ -8,5 +8,5 @@ import java.util.List;
 public interface OderDetailService {
     OderDetailResponseDTO createOderDetail(OderDetailRequestDTO requestDTO);
     List<OderDetailResponseDTO> getAllOderDetails();
-    List<OderDetailResponseDTO> getByOderId(Long oderId);
+    List<OderDetailResponseDTO> findById(Long oderId);
 }

@@ -23,7 +23,7 @@ public class OderStatusHistoryController {
     public final OderStatusHistoryService oderStatusHistoryService;
 
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<OderHistoryResponsesDTO> createOder(
             @Valid @RequestBody OderHistoryRequestDTO requestDTO) {
         return ResponseEntity.ok(oderStatusHistoryService.createOder(requestDTO));

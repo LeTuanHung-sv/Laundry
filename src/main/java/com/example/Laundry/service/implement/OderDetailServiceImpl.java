@@ -8,9 +8,11 @@ import com.example.Laundry.repository.OderDetailRepository;
 import com.example.Laundry.service.OderDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,6 +24,7 @@ public class OderDetailServiceImpl implements OderDetailService {
     private final OderDetailMapper oderDetailMapper;
 
     @Override
+    @Transactional
     public OderDetailResponseDTO createOderDetail(OderDetailRequestDTO requestDTO){
         OderDetail oderDetail = OderDetail.builder()
                 .price(requestDTO.getPrice())
@@ -43,6 +46,7 @@ public class OderDetailServiceImpl implements OderDetailService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<OderDetailResponseDTO> getAllOderDetails(){
         return oderDetailRepository.findAll()
                 .stream()
@@ -56,12 +60,10 @@ public class OderDetailServiceImpl implements OderDetailService {
     }
 
     @Override
-    public List<OderDetailResponseDTO> getByOderId(Long oderId) {
-       List<OderDetail> oderDetails = oderDetailRepository.findByOder_OderId(oderId);
-
-       if(oderDetails.isEmpty()){
-           throw new RuntimeException("oderId khong hop le:" + oderId);
-       }
+    @Transactional(readOnly = true)
+    public List<OderDetailResponseDTO> findById(Long oderId) {
+       List<OderDetail> oderDetails = oderDetailRepository.findByOder_OderId(oderId)
+               .orElseThrow(() -> new RuntimeException("orderId not found: " + oderId));
 
        return oderDetails.stream()
                .map(oderDetailMapper::toDto)

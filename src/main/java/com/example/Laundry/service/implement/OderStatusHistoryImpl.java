@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Builder
+
 
 public class OderStatusHistoryImpl implements OderStatusHistoryService {
     private final OrderStatusHistoryRepository historyRepository;
