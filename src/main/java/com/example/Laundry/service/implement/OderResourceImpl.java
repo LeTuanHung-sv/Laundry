@@ -46,7 +46,11 @@ public class OderResourceImpl implements OderResourceService {
 
     @Override
     public List<OderResourceResponseDTO> getResourcesByOrder(Long orderId){
-        List<OderResource> list = oderResourceRepository.findByOder_OderId(orderId);
-        return oderResourceMapper.toResponseDTOList(list);
+        List<OderResource> list = oderResourceRepository.findByOder_OderId(orderId)
+                .orElseThrow(() -> new RuntimeException("orderId not found:" + orderId));
+
+        return list.stream()
+                .map(oderResourceMapper::toResponseDTO)
+                .toList();
     }
 }

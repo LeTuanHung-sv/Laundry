@@ -6,7 +6,6 @@ import com.example.Laundry.dto.OderResourceResponseDTO;
 import java.util.List;
 
 public interface OderResourceService {
-    public OderResourceResponseDTO allocateResource(Long orderId, OderResourceRequestDTO dto);
-
-    public List<OderResourceResponseDTO> getResourcesByOrder(Long orderId);
+    OderResourceResponseDTO allocateResource(Long orderId, OderResourceRequestDTO dto);
+    List<OderResourceResponseDTO> getResourcesByOrder(Long orderId);
 }
