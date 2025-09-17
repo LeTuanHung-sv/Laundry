@@ -1,14 +1,14 @@
 package com.example.Laundry.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.validation.constraints.Negative;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -21,13 +21,12 @@ public class OderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "id cannot be blank")
     private Long oderDetailId;
 
-    @Negative(message = "price cannot be negative")
+    @Min(value = 0,message = "price cannot be negative")
     private BigDecimal price;
 
-    @Negative(message = "price cannot be negative")
+    @Min(value = 0,message = "amount cannot be negative")
     private BigDecimal amount;
 
     @NotBlank(message = "specialRequest not null")
@@ -38,7 +37,7 @@ public class OderDetail {
     private Oder oder;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "service_id", nullable = false)
-    private Service service;
+    @JoinColumn(name = "service_id")
+    private ServiceEntity service;
 
 }

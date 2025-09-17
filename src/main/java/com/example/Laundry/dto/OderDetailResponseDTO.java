@@ -1,7 +1,5 @@
 package com.example.Laundry.dto;
 
-import com.example.Laundry.entity.OderDetail;
-import com.example.Laundry.entity.Service;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import jakarta.validation.constraints.Negative;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 
 @Data

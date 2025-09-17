@@ -3,8 +3,10 @@ package com.example.Laundry.service.implement;
 import com.example.Laundry.dto.OderDetailRequestDTO;
 import com.example.Laundry.dto.OderDetailResponseDTO;
 import com.example.Laundry.entity.OderDetail;
+import com.example.Laundry.entity.ServiceEntity;
 import com.example.Laundry.mapper.OderDetailMapper;
 import com.example.Laundry.repository.OderDetailRepository;
+import com.example.Laundry.repository.ServiceRepository;
 import com.example.Laundry.service.OderDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,16 +24,19 @@ public class OderDetailServiceImpl implements OderDetailService {
 
     private final OderDetailRepository oderDetailRepository;
     private final OderDetailMapper oderDetailMapper;
+    private final ServiceRepository serviceRepository;
 
     @Override
     @Transactional
     public OderDetailResponseDTO createOderDetail(OderDetailRequestDTO requestDTO){
+        ServiceEntity service = serviceRepository.findById(requestDTO.getServiceId())
+                .orElseThrow(() -> new RuntimeException("Service not found"));
+
         OderDetail oderDetail = OderDetail.builder()
                 .price(requestDTO.getPrice())
                 .amount(requestDTO.getAmount())
                 .specialRequest(requestDTO.getSpecialRequest())
-                //.service(requestDTO.getService())
-                .service(new com.example.Laundry.entity.Service())
+                .service(service)
                 .build();
         OderDetail oderDetail1 = oderDetailRepository.save(oderDetail);
         return OderDetailResponseDTO.builder()
@@ -47,6 +52,7 @@ public class OderDetailServiceImpl implements OderDetailService {
 
     @Override
     @Transactional(readOnly = true)
+
     public List<OderDetailResponseDTO> getAllOderDetails(){
         return oderDetailRepository.findAll()
                 .stream()

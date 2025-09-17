@@ -37,7 +37,7 @@ public class Staff {
     private ArrayList<Promotion> promotion;
 
     @OneToMany(mappedBy = "staff")
-    private ArrayList<Service> services;
+    private ArrayList<ServiceEntity> services;
 
     @OneToOne(mappedBy = "staff")
     private Account account;

@@ -5,7 +5,6 @@ import lombok.Data;
 
 import jakarta.validation.constraints.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,5 +35,5 @@ public class Promotion {
     private Staff staff;
 
     @OneToMany(mappedBy = "promotion")
-    private List<Service> services;
+    private List<ServiceEntity> services;
 }
