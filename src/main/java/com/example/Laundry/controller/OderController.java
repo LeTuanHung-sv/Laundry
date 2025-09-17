@@ -1,4 +1,4 @@
 package com.example.Laundry.controller;
 
-public class OderDetailController {
+public class OderController {
 }

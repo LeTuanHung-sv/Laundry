@@ -3,6 +3,8 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Negative;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,8 +17,13 @@ public class Oder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long oderId;
+
+    @Future(message = "Booking date must be in the future")
     private Date oderDate;
+
+    @Negative(message = "totalAmount cannot be Negative")
     private BigDecimal totalAmount;
+
     private String note;
 
     @OneToMany(mappedBy = "oder")
