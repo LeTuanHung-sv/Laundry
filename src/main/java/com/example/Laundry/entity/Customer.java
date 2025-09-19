@@ -27,7 +27,7 @@ public class Customer {
     private String email;
 
     @NotBlank(message = "phoneNumber cannot be null or blank")
-    private Double phoneNumber;
+    private String phoneNumber;
 
     @NotBlank(message = "level cannot be null or blank")
     private String level;
