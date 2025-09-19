@@ -49,5 +49,6 @@ public class Oder {
     @JoinColumn(name = "deliveryId")
     private Delivery delivery;
 
+    @OneToMany(mappedBy = "oder", cascade = CascadeType.ALL)
     private List<OderStatusHistory> oderStatusHistories = new ArrayList<>();
 }
