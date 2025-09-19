@@ -10,6 +10,7 @@ import javax.validation.constraints.Negative;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -20,11 +21,15 @@ import java.util.Date;
 public class OderRequestDTO {
 
     @Future(message = "Booking date must be in the future")
-    private Date oderDate;
+    private LocalDateTime oderDate;
 
     @Negative(message = "totalAmount cannot be Negative")
-    private BigDecimal totalAmount;
+    private Double totalAmount;
 
     private String note;
+
+//    private Long customerId;
+//
+//    private Long deliveryId;
 
 }

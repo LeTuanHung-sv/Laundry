@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Negative;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,24 +20,24 @@ public class Oder {
     private Long oderId;
 
     @Future(message = "Booking date must be in the future")
-    private Date oderDate;
+    private LocalDateTime oderDate;
 
     @Negative(message = "totalAmount cannot be Negative")
-    private BigDecimal totalAmount;
+    private Double totalAmount;
 
     private String note;
 
     @OneToMany(mappedBy = "oder")
     private List<OderDetail> oderDetailList = new ArrayList<>();
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customer;
 
     @OneToOne(mappedBy = "oder")
     private Invoice invoice;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "deliveryId")
     private Delivery delivery;
 }
