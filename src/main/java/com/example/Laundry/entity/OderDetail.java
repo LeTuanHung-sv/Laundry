@@ -2,6 +2,7 @@ package com.example.Laundry.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -23,5 +24,4 @@ public class OderDetail {
     @ManyToOne()
     @JoinColumn(name = "serviceId")
     private Service service;
-
 }
