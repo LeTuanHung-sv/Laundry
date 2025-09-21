@@ -4,9 +4,15 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+
+import javax.validation.constraints.Future;
+import javax.validation.constraints.PositiveOrZero;
+
 
 @Entity
 @Table
@@ -15,8 +21,13 @@ public class Oder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long oderId;
-    private Date oderDate;
+
+    @Future(message = "Booking date must be in the future")
+    private LocalDateTime oderDate;
+
+    @PositiveOrZero(message = "totalAmount cannot be <= 0")
     private BigDecimal totalAmount;
+
     private String note;
 
     @OneToMany(mappedBy = "oder")

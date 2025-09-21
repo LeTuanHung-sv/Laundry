@@ -3,6 +3,7 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.validation.constraints.Negative;
 import java.math.BigDecimal;
 
 @Entity
@@ -12,8 +13,14 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long invoiceId;
+
+    @Negative(message = "amount cannot be negative")
     private BigDecimal amount;
+
+    @Negative(message = "price cannot be negative")
     private BigDecimal price;
+
+    @Negative(message = "totalPrice cannot be negative")
     private BigDecimal totalPrice;
 
     @OneToOne()
