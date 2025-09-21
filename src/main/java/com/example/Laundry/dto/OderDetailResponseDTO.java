@@ -1,11 +1,12 @@
 package com.example.Laundry.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import jakarta.validation.constraints.Negative;
+import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 
@@ -13,22 +14,19 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OderDetailRequestDTO {
+public class OderDetailResponseDTO {
 
-    
-    private Long oderDetailId;
+    private Long id;
 
-    @PositiveOrZero(message = "price must be >= 0")
+    @Negative(message = "price cannot be negative")
     private BigDecimal price;
 
-    @PositiveOrZero(message = "amount must be >= 0")
+    @Negative(message = "price cannot be negative")
     private BigDecimal amount;
 
-    @NotBlank(message = "specialRequest cannot be blank")
+    @NotBlank(message = "specialRequest not null")
     private String specialRequest;
 
 //    @NotBlank(message = "service not blank or null")
 //    private Service service;
-
-    private Long serviceId;
 }

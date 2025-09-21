@@ -1,27 +1,43 @@
 package com.example.Laundry.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table
+@Table (name = "oder_details")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OderDetail {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long orderDetailId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long oderDetailId;
+
+    @Min(value = 0,message = "price cannot be negative")
     private BigDecimal price;
+
+    @Min(value = 0,message = "amount cannot be negative")
     private BigDecimal amount;
 
-    @ManyToOne()
-    @JoinColumn(name = "oderId")
+    @NotBlank(message = "specialRequest not null")
+    private String specialRequest;
+
+    @ManyToOne
+    @JoinColumn(name = "oder_id")
     private Oder oder;
 
-    @ManyToOne()
-    @JoinColumn(name = "serviceId")
-    private Service service;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "service_id")
+    private ServiceEntity service;
 
 }
