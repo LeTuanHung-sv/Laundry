@@ -1,4 +1,4 @@
 package com.example.Laundry.repository;
 
-public class OderDetailRepository {
+public class CustomersRepository {
 }

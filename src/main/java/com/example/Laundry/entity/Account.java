@@ -14,7 +14,6 @@ public class Account {
     @Id
     private Long accountId;
 
-
     @NotNull(message = "password cannot be blank")
     private String password;
 
