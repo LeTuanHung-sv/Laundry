@@ -1,6 +1,5 @@
 package com.example.Laundry.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,9 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @Builder
 
-public class CustomersRequestDTO {
+public class CustomersResponseDTO {
+
+    private Long customerId;
 
     @NotBlank(message = "name cannot be null or blank")
     private String name;
