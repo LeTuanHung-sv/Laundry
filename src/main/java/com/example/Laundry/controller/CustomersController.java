@@ -17,12 +17,12 @@ import java.util.List;
 public class CustomersController {
     private final CustomersService customerService;
 
-    @PostMapping("/create/customers")
+    @PostMapping("/create")
     public ResponseEntity<CustomersResponseDTO> createCustomer(@Valid @RequestBody CustomersRequestDTO dto) {
         return ResponseEntity.ok(customerService.createCustomer(dto));
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<CustomersResponseDTO>> getAllCustomers() {
         return ResponseEntity.ok(customerService.getAllCustomers());
     }
@@ -32,14 +32,14 @@ public class CustomersController {
         return ResponseEntity.ok(customerService.getCustomerById(id));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/update")
     public ResponseEntity<CustomersResponseDTO> updateCustomer(
             @PathVariable Long id,
             @Valid @RequestBody CustomersRequestDTO dto) {
         return ResponseEntity.ok(customerService.updateCustomer(id, dto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}/delete")
     public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok("Đã xóa khách hàng thành công");

@@ -57,7 +57,7 @@ public class CustomersServiceImpl implements CustomersService {
 
                     if (!customer.getEmail().equals(dto.getEmail())) {
                         if (customerRepository.existsByEmail(dto.getEmail())) {
-                            throw new RuntimeException("email not found");
+                            throw new RuntimeException("email already exists");
                         }
                         customer.setEmail(dto.getEmail());
                     }
@@ -69,11 +69,9 @@ public class CustomersServiceImpl implements CustomersService {
 
     @Override
     public void deleteCustomer(Long id) {
-        customerRepository.findById(id)
-                .ifPresentOrElse(
-                        customerRepository::delete,
-                        () -> { throw new RuntimeException("CustomerId not found");}
-                );
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("CustomerId not found"));
+        customerRepository.delete(customer);
     }
 
     @Override
