@@ -36,6 +36,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/javax.validation/validation-api
 	implementation("javax.validation:validation-api:2.0.1.Final")
 
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 
 	// Lombok - giảm code boilerplate (getter, setter, constructor, ...)
 	compileOnly 'org.projectlombok:lombok'
