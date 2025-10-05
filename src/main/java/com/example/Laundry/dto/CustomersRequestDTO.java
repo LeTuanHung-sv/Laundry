@@ -1,18 +1,20 @@
-package com.example.Laundry.entity;
+package com.example.Laundry.dto;
 
-import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.*;
-import java.util.ArrayList;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
-@Entity
 @Data
-@Table
-public class Customer {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    private Long customerId;
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+
+public class CustomersRequestDTO {
 
     @NotBlank(message = "name cannot be null or blank")
     private String name;
@@ -32,9 +34,4 @@ public class Customer {
     @NotBlank(message = "avatar cannot be null or blank")
     private String avatar;
 
-    @OneToOne(mappedBy = "customer")
-    private Account account;
-
-    @OneToMany(mappedBy = "customer")
-    private ArrayList<Oder> oder;
 }

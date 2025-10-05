@@ -2,6 +2,7 @@ package com.example.Laundry.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import javax.validation.constraints.*;
 
 import jakarta.validation.constraints.*;
 

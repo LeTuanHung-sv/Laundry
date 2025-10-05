@@ -12,7 +12,6 @@ import jakarta.validation.constraints.NotNull;
 public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @NotNull(message = "id cannot be blank")
     private Long accountId;
 
     @NotNull(message = "password cannot be blank")

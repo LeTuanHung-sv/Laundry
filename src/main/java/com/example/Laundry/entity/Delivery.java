@@ -3,8 +3,7 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 
 @Entity
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @NotNull(message = "id cannot be blank")
     private Long deliveryId;
 
     @NotBlank(message = "description cannot be null or blank")

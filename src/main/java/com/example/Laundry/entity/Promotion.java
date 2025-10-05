@@ -3,10 +3,10 @@ package com.example.Laundry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import jakarta.validation.constraints.*;
 
 import java.util.Date;
 import java.util.List;
+import javax.validation.constraints.*;
 
 @Entity
 @Table

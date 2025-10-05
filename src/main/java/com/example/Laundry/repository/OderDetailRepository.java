@@ -12,5 +12,3 @@ import java.util.Optional;
 public interface OderDetailRepository extends JpaRepository<OderDetail, Long> {
     Optional<List<OderDetail>> findByOder_OderId(Long oderId);
 }
-
-
